@@ -1,0 +1,61 @@
+随机生十五个0~99的整数，存放于一维数组当中；使用冒泡算法对它们进行升序排序；排序后，取前九个数存入一个3×3的二维矩阵数组中，并输出显示。
+
+
+
+import java.util.Arrays;
+public class Exam1 {
+
+	public static void main(String[] args) {
+		int num[] = new int[15];
+		
+		for(int i=0;i<15;i++) {
+			num[i] = (int)Math.round(Math.random()*100);
+		}
+		
+		System.out.println("原数组为：");
+		System.out.println(Arrays.toString(num));
+		
+		sort(num);
+		int copyNum[] = Arrays.copyOf(num, 9);
+		matriPrint(copyNum);
+	}
+	
+	public static void sort(int num[]) {					//冒泡排序
+		int temp;
+		
+		for(int i=0;i<num.length-1;i++) {
+			for(int j=0;j<num.length-1;j++) {
+				if(num[j]>num[j+1]) {
+					temp = num[j];
+					num[j] = num[j+1];
+					num[j+1] = temp;
+				}
+			}
+		}
+		
+		System.out.println("排序后数组为：");
+		System.out.println(Arrays.toString(num));
+	}
+	
+	public static void matriPrint(int[] copyNum) {			//打印成3*3的二维数组
+		int k = 0;
+		int numList[][] = new int[3][3];
+		
+		for(int i=0;i<3;i++) {								//从copyNum中复制
+			for(int j=0;j<3;j++) {
+				numList[i][j] = copyNum[k];
+				k++;
+			}
+		}
+		System.out.println("转换后数组为：");
+		
+		for(int[] row:numList) {							//遍历打印
+			for(int col:row) {
+				System.out.print(col+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
