@@ -1,0 +1,71 @@
+根据变量score中存放的考试分数，输出对应的等级并判断分数是否为素数。
+要求：
+从键盘输入学生成绩，60分以下为D等；60～69为C等；70～89为B等；90～100为A等；
+判断输入的分数是否为素数，为素数分的同学参加座谈会，其余写学习心得；
+根据系统提示，用户输入“Y”，能够反复输入学生成绩，并进行判断，直到用户输入“N”为止。
+
+
+
+
+package one;
+
+import java.util.Scanner;
+
+public class Exam {
+
+	public static String layer(int score) {				//判断等级
+		String lay = "a";
+		if( score < 60 ) {
+			lay = "D";
+		}else if( score >= 60 && score < 70) {
+			lay = "C";
+		}else if( score >= 70 && score < 90) {
+			lay = "B";
+		}else if( score >= 90 && score <= 100) {
+			lay = "A";
+		}
+		return lay;
+		
+	}
+	
+	public static String su(int score) {				//判断是否素数
+		int aa = 0;
+		for(int i = 2;i < score; i++) {
+			if( score % i == 0) {
+				aa++;
+				return "成绩为非素数，请写学习心得";
+			}
+		}
+		if(aa == 0) {
+			return "成绩为素数，请参加座谈会";
+		}else {
+			return null;
+		}
+	}
+
+	public static void main(String[] args) {
+		int score = 0;
+		String boo = "a";
+		String booo = "Y";
+		
+		System.out.println("请输入Y或N：");
+		Scanner in = new Scanner(System.in);
+		boo = in.nextLine();
+		
+		while(boo.equals(booo)){
+			System.out.println("请输入成绩：");
+			Scanner in2 = new Scanner(System.in);
+			score = in2.nextInt();
+			
+			System.out.println("成绩等级为" + layer(score) + "等");
+			System.out.println(su(score));
+			
+			System.out.println("请输入Y或N：");
+			Scanner in1 = new Scanner(System.in);
+			boo = in1.nextLine();
+			
+		}
+
+	}
+
+}
