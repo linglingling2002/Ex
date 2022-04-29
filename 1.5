@@ -5,16 +5,16 @@ public class Input {
 		int a[][] = new int[4][4];				           	//定义数组
 		
 		for(int i = 0 ; i < a.length ; i++) {
-			a[i][i] = i;						                  	//主对角线数字
+			a[i][i] = i;						       	//主对角线数字
 			for(int j = 0 ; j < a.length;j++) {
-				if(j < i) {						                  	//对角线左边的数字
+				if(j < i) {					     	//对角线左边的数字
 					a[i][j] = j;
 				}else if(j > i) {
-					a[i][j] = i;				                  	//对角线右边的数字
+					a[i][j] = i;			            	//对角线右边的数字
 				}
 			}
 		}
-		for(int i = 0;i < a.length;i++) {		         	//输出
+		for(int i = 0;i < a.length;i++) {		         		//输出
 			for(int j = 0; j < a.length; j++) {
 				System.out.print(a[i][j]);
 				System.out.print(" ");
