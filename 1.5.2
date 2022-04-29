@@ -1,0 +1,39 @@
+public class Input1 {
+	public static void main(String[] args) {
+		int hang = 4;										//确定总行数
+		int a[][] = new int[hang][];						//定义数组
+		
+		for(int i = 0 ; i < a.length ;i++) {
+			a[i] = new int[i + hang];						//数组每一行的长度
+			a[i][i + hang - 1] = i + 1;						//金字塔中线的数字, j = hang - 1
+		}
+		
+		for(int i = 0 ; i < a.length ; i++) {
+			for(int j = 0 ; j < i + hang ; j++) {
+				if(i + j <= hang - 2) {
+					a[i][j] = 0;							//金字塔左上的空处
+				}else if(i + j >= hang - 1 && j < hang) {	//行与列相加大于等于总行数-1同时列数小于总行数
+					a[i][j] = i + j - hang + 2;				//金字塔左半边
+				}else {
+					a[i][j] = a[i][hang*2 - 2 - j];			//金字塔右半边
+				}
+			}
+		}
+		
+		for(int i = 0;i<a.length;i++) {						//输出金字塔
+			for(int j =0;j<i+hang;j++) {
+				if(i + j >= hang - 1) {
+					System.out.print(a[i][j]);
+				}else {
+					System.out.print(" ");					//左上角不输出
+				}
+				if(hang < 10) {
+					System.out.print(" ");
+				}else {
+					System.out.print("\t");					//大于等于10的时候，两位数比一位数占的空间多
+				}
+			}
+			System.out.println();
+		}
+	}
+}
